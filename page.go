@@ -526,6 +526,10 @@ func (p Page) GetPlainText(fonts map[string]*Font) (result string, err error) {
 				panic("bad Tj operator")
 			}
 			showText(args[0].RawString())
+			_, err := textBuilder.WriteRune('\n')
+			if err != nil {
+				panic(err)
+			}
 		case "TJ": // show text, allowing individual glyph positioning
 			v := args[0]
 			for i := 0; i < v.Len(); i++ {
@@ -533,6 +537,10 @@ func (p Page) GetPlainText(fonts map[string]*Font) (result string, err error) {
 				if x.Kind() == String {
 					showText(x.RawString())
 				}
+			}
+			_, err := textBuilder.WriteRune('\n')
+			if err != nil {
+				panic(err)
 			}
 		}
 	})

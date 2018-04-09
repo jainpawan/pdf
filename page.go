@@ -526,7 +526,7 @@ func (p Page) GetPlainText(fonts map[string]*Font) (result string, err error) {
 				panic("bad Tj operator")
 			}
 			showText(args[0].RawString())
-			_, err := textBuilder.WriteRune('\n')
+			_, err := textBuilder.WriteRune(' ')
 			if err != nil {
 				panic(err)
 			}
@@ -538,7 +538,7 @@ func (p Page) GetPlainText(fonts map[string]*Font) (result string, err error) {
 					showText(x.RawString())
 				}
 			}
-			_, err := textBuilder.WriteRune('\n')
+			_, err := textBuilder.WriteRune(' ')
 			if err != nil {
 				panic(err)
 			}
